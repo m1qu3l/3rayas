@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        table{
+            max-width: 750px;
+            width: 90%;
+            height: 60%;
+        }
+        tr{
+            height: calc(100% / 3);
+        }
+        td{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            font-size: 2em;
+            width: calc(100% / 3);
+            border-radius: 10px;
+            box-shadow: -15px -15px 15px 1px rgb(255 255 255 / 20%), 15px 15px 15px 1px rgb(0 0 0 / 10%), inset -5px -5px 5px 1px rgb(255 255 255 / 20%), inset 5px 5px 5px 1px rgb(0 0 0 / 10%);
+        }
+        .b_r{
+            border-right: 1px solid #000;
+        }
+        .b_b{
+            border-bottom: 1px solid #000;
+        }
+        .co_top, .co_bo{
+            position: absolute;
+            text-transform: uppercase;
+        }
+        .co_top{
+            top: 5%;
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .co_top{
+            font-size: 1.1em;
+        }
+        .co_top p, .menu p{
+            text-shadow: 0 0 5px #aafa, 0 0 10px #aafa, 0 0 15px #aafa;
+            box-shadow: -15px -15px 15px 1px rgb(255 255 255 / 20%), 15px 15px 15px 1px rgb(0 0 0 / 10%), inset -5px -5px 5px 1px rgb(255 255 255 / 20%), inset 5px 5px 5px 1px rgb(0 0 0 / 10%);
+            padding: 1em;
+            border-radius: 10px;
+        }
+        .menu{
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            background: #0003;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            transform: scale(0);
+            transition: transform .1s ease-in;
+            text-align: center;
+        }
+        .menu_ac{transform: scale(1) ; transition: transform .1s ease-in;}
+        .blur{
+            filter: blur(3px) ;
+        }
+        .menu p{
+            margin: 5em 0;
+        }
+        .miquel{
+            z-index: 100;
+            position: absolute;
+            bottom: 5%;
+            left: 5%;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="miquel">
+        <b><i>MIQUEL</i></b>
+    </div>
+
+    <div class="co_top">
+        <b class="tur">Truno : <samp>X</samp></b>
+        <p class="btn_r" data-v="">reiniciar</p>
+    </div>
+    <div class="co_bo">
+        <h3 class="ganas">
+        </h3>
+    </div>
+
+        <div class="menu">
+            <h2 class="texto">a</h2>
+            <p class="btn">volver a jugar</p>
+        </div>
+    
+    <table>
+        <tr>
+            <td></td> 
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>const activo = () =>{document.querySelector(".menu").classList.toggle("menu_ac");document.querySelector("table").classList.toggle("blur");document.querySelector(".co_top").classList.toggle("blur");document.querySelector(".co_bo").classList.toggle("blur");};const fun = (n1, n2, n3, text)=> {document.querySelectorAll("td")[n1].style.setProperty("background", "#aafa");document.querySelectorAll("td")[n2].style.setProperty("background", "#aafa");document.querySelectorAll("td")[n3].style.setProperty("background", "#aafa");document.querySelector(".texto").innerHTML = "Gamo!!! <br><br><br> " + text;activo();};const con = () =>{const e = num => document.querySelectorAll("td")[num].innerHTML;if (e(0) == "X" && e(1) == "X" && e(2) == "X") {fun(0, 1, 2, "X");} else if (e(3) == "X" && e(4) == "X" && e(5) == "X"){fun(3, 4, 5, "X");} else if (e(6) == "X" && e(7) == "X" && e(8) == "X"){fun(6, 7, 8, "X");} else if (e(0) == "X" && e(3) == "X" && e(6) == "X"){fun(0, 3, 6, "X");} else if (e(1) == "X" && e(4) == "X" && e(7) == "X"){fun(1, 4, 7, "X");} else if (e(2) == "X" && e(5) == "X" && e(8) == "X"){fun(2, 5, 8, "X");} else if (e(0) == "X" && e(4) == "X" && e(8) == "X"){fun(0, 4, 8, "X");} else if (e(2) == "X" && e(4) == "X" && e(6) == "X"){fun(2, 4, 6, "X");} else if (e(0) == "0" && e(1) == "0" && e(2) == "0") {fun(0, 1, 2, "0");} else if (e(3) == "0" && e(4) == "0" && e(5) == "0"){fun(3, 4, 5, "0");} else if (e(6) == "0" && e(7) == "0" && e(8) == "0"){fun(6, 7, 8, "0");} else if (e(0) == "0" && e(3) == "0" && e(6) == "0"){fun(0, 3, 6, "0");} else if (e(1) == "0" && e(4) == "0" && e(7) == "0"){fun(1, 4, 7, "0");} else if (e(2) == "0" && e(5) == "0" && e(8) == "0"){fun(2, 5, 8, "0");} else if (e(0) == "0" && e(4) == "0" && e(8) == "0"){fun(0, 4, 8, "0");} else if (e(2) == "0" && e(4) == "0" && e(6) == "0"){fun(2, 4, 6, "0");}};let conteo = 0, turno = true;document.addEventListener("click", e => {if (!e.target.matches("td")) return false;if (!e.target.innerHTML) {e.target.innerHTML = turno ? "X" : "0";document.querySelector(".tur samp").innerHTML = turno ? "0" : "X";turno = turno ? false : true;conteo > 7 ? (activo(), conteo = 0, document.querySelector(".texto").innerHTML = "empate") :  (con(), conteo++);}});document.addEventListener("click", e =>{ if (!e.target.matches(".btn_r")) return false;conteo = 0;turno = true;document.querySelector(".tur samp").innerHTML = turno ? "X" : "0";document.querySelectorAll("td").forEach(el =>{el.innerHTML = "";el.style.setProperty("background", "transparent");})});document.addEventListener("click", e =>{if (!e.target.matches(".btn")) return false;conteo = 0;turno = true;document.querySelector(".tur samp").innerHTML = turno ? "X" : "0";activo();document.querySelectorAll("td").forEach(el =>{el.innerHTML = "";el.style.setProperty("background", "transparent");})})
+    </script>
+</body>
+</html>
