@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPERACIONES</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div{
+            width: 90%;
+            margin: auto;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #000 !important;
+        }
+        main div{
+            margin: 1em 0;
+            margin-bottom: 3em;
+            display: flex;
+            flex-direction: column;
+            padding: 1em 2em;
+            position: relative;
+            background: #fafffa;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: -15px -15px 15px 1px rgb(255 255 255 / 20%), 15px 15px 15px 1px rgb(0 0 0 / 10%), inset -5px -5px 5px 1px rgb(255 255 255 / 20%), inset 5px 5px 5px 1px rgb(0 0 0 / 10%);
+        }
+        main div h2{
+            padding-bottom: 1em;
+        }
+        main div form input{
+            display: block;
+            padding: .3em .2em;
+            border: none;
+            margin: .3em auto;
+            box-shadow: -15px -15px 15px 1px rgb(255 255 255 / 20%), 15px 15px 15px 1px rgb(0 0 0 / 10%), inset -5px -5px 5px 1px rgb(255 255 255 / 20%), inset 5px 5px 5px 1px rgb(0 0 0 / 10%);
+            border-radius: 5px;
+        }
+        [type="submit"]{
+            padding: .5em .3em;
+        }
+        [type="submit"]::after{
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: calc(100% + 10px);
+            height: calc(100% + 10px);
+            transform: scale(1.02);
+            background: linear-gradient(120deg,
+                #f4cc9d,  #91ff00,#9999ff, #99ff99, #ff9999, #ff4444, #000
+            );
+            background-size: 300% !important;
+            border-radius: 10px;
+            z-index: -1;
+            filter: blur(10px);
+        }
+        [type="number"]{
+            display: inline;
+            margin: 1em 3em;
+        }
+        .text{
+            text-align: center;
+            box-shadow: none;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body style="background: #fafffa;">
+    <div>
+        <main>
+            <h1 style="margin: 1em 0;">LEOPOLDO MIQUEL MUÑIZ RIVAS</h1>
+            <!-- ################################################## -->
+            <div>
+                <header>
+                    <h2>Suma</h2>
+                </header>
+    
+                <aside>
+                    <form action="" method="post" class="suma">
+                        <input type="number" name="n1" placeholder="numero 1">
+                        <input type="number" name="n2" placeholder="numero 2">
+                        <input type="submit" value="resultado" name="res" data-res="+">
+                        <input type="text" disabled class="text" name="text" value="resultado">
+                    </form>
+                </aside>
+            </div>
+
+            <!-- ################################################## -->
+
+            <p class="se"></p>
+
+            <div>
+                <header>
+                    <h2>Resta</h2>
+                </header>
+    
+                <aside>
+                    <form action="" method="post" class="resta">
+                        <input type="number" name="n1" placeholder="numero 1">
+                        <input type="number" name="n2" placeholder="numero 2">
+                        <input type="submit" value="resultado" name="res" data-res="-">
+                        <input type="text" disabled class="text" name="text" value="resultado">
+                    </form>
+                </aside>
+            </div>
+
+            <!-- ################################################## -->
+
+            <p class="se"></p>
+
+            <div>
+                <header>
+                    <h2>Multiplicar</h2>
+                </header>
+    
+                <aside>
+                    <form action="" method="post" class="mul">
+                        <input type="number" name="n1" placeholder="numero 1">
+                        <input type="number" name="n2" placeholder="numero 2">
+                        <input type="submit" value="resultado" name="res" data-res="*">
+                        <input type="text" disabled class="text" name="text" value="resultado">
+                    </form>
+                </aside>
+            </div>
+            
+            <!-- ################################################## -->
+
+            <p class="se"></p>
+
+            <div>
+                <header>
+                    <h2>Divicion</h2>
+                </header>
+    
+                <aside>
+                    <form action="" method="post" class="div">
+                        <input type="number" name="n1" placeholder="numero 1">
+                        <input type="number" name="n2" placeholder="numero 2">
+                        <input type="submit" value="resultado" name="res" data-res="/">
+                        <input type="text" disabled class="text" name="text" value="resultado">
+                    </form>
+                </aside>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.addEventListener("submit", e =>{
+            e.preventDefault()
+            const ope = {
+                "+" : parseInt(e.target.n1.value) + parseInt(e.target.n2.value),
+                "-" : parseInt(e.target.n1.value) - parseInt(e.target.n2.value),
+                "*" : parseInt(e.target.n1.value) * parseInt(e.target.n2.value),
+                "/" : parseInt(e.target.n1.value) / parseInt(e.target.n2.value),
+            }
+            e.target.text.value = "resulado : " + ope[e.target.res.dataset.res]
+        })
+    </script>
+</body>
+</html>
